@@ -7,10 +7,10 @@
 //
 
 enum WLRErrorType: Int {
-    
+
     /** The passed URL does not match a registered route. */
     case notFound = 45150
-    
+
     /** The matched route handler does not specify a target view controller. */
     case handlerTargetOrSourceViewControllerNotSpecified = 45151
     case blockHandleNoReturnRequest = 45152
@@ -21,11 +21,11 @@ extension NSError {
     static var WLRNotFoundError: NSError {
         return WLRError(with: WLRErrorType.notFound.rawValue, msg: "The passed URL does not match a registered route.")
     }
-    
+
     static var WLRTransitionError: NSError {
         return WLRError(with: WLRErrorType.handlerTargetOrSourceViewControllerNotSpecified.rawValue, msg: "TargetViewController or SourceViewController not correct")
     }
-    
+
     static var WLRHandleBlockNoTeturnRequest: NSError {
         return WLRError(with: WLRErrorType.blockHandleNoReturnRequest.rawValue, msg: "Block handle no turn WLRRouteRequest object")
     }

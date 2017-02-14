@@ -8,13 +8,13 @@ extension String {
         let unreservedCharset = CharacterSet(charactersIn: unreservedChars)
         return addingPercentEncoding(withAllowedCharacters: unreservedCharset) ?? self
     }
-    
+
     var decoding: String {
         return removingPercentEncoding ?? self
     }
 
     func index(from: Int) -> Index {
-        return self.index(startIndex, offsetBy: from)
+        return index(startIndex, offsetBy: from)
     }
 
     func substring(from: Int) -> String {
@@ -29,7 +29,7 @@ extension String {
     func substr(with range: NSRange) -> String {
         let start = index(startIndex, offsetBy: range.location)
         let end = index(endIndex, offsetBy: range.location + range.length - characters.count)
-        return substring(with: start..<end)
+        return substring(with: start ..< end)
     }
 
     var length: Int {
@@ -41,10 +41,10 @@ extension URL {
     var parameters: [String: String] {
 
         let components = NSURLComponents(url: self, resolvingAgainstBaseURL: false)
-        
+
         // 取出items，如果為nil就改為預設值 空陣列
         let queryItems = components?.queryItems ?? []
-        
+
         return queryItems.reduce([String: String]()) {
             var dict = $0
             dict[$1.name] = $1.value ?? ""
@@ -53,13 +53,12 @@ extension URL {
     }
 }
 
-
 extension UIViewController {
-    
+
     private struct AssociatedKeys {
         static var wlr_request = "wlr_request"
     }
-    
+
     var wlr_request: WLRRouteRequest? {
         set {
             guard let newValue = newValue else { return }
@@ -70,9 +69,9 @@ extension UIViewController {
             return objc_getAssociatedObject(self, &AssociatedKeys.wlr_request) as? WLRRouteRequest
         }
     }
-    
+
     static let _onceToken = UUID().uuidString
-    
+
     open override class func initialize() {
         DispatchQueue.once(token: _onceToken) {
             exchangeMethod(with: self, originalSelector: #selector(viewDidDisappear), swizzledSelector: #selector(wlr_viewDidDisappearSwzzled))
@@ -80,14 +79,14 @@ extension UIViewController {
     }
 
     func wlr_viewDidDisappearSwzzled(_ animated: Bool) {
-        print("wlr_viewDidDisappearSwzzled")
+
         if let wlr_request = wlr_request, !wlr_request.isConsumed {
             wlr_request.defaultFinishTargetCallBack()
         }
         wlr_request = nil
         wlr_viewDidDisappearSwzzled(animated)
     }
-    
+
     static func exchangeMethod(with cls: AnyClass, originalSelector: Selector, swizzledSelector: Selector) {
         let originalMethod = class_getInstanceMethod(cls, originalSelector)
         let swizzledMethod = class_getInstanceMethod(cls, swizzledSelector)
@@ -100,17 +99,16 @@ extension UIViewController {
         } else {
             method_exchangeImplementations(originalMethod, swizzledMethod)
         }
-        
     }
 }
 
 extension DispatchQueue {
-    
+
     private static var _onceTracker = [String]()
-    
+
     public class func once(token: String, block: () -> Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
-        
+
         if _onceTracker.contains(token) {
             return
         }
@@ -118,6 +116,3 @@ extension DispatchQueue {
         block()
     }
 }
-
-
-

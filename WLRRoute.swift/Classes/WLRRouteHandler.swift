@@ -10,7 +10,7 @@ class WLRRouteHandler {
     func shouldHandle(with request: WLRRouteRequest) -> Bool {
         return true
     }
-    
+
     func targetViewController(with request: WLRRouteRequest) -> UIViewController {
 
         return UIViewController()
@@ -19,20 +19,19 @@ class WLRRouteHandler {
     func sourceViewControllerForTransition(with request: WLRRouteRequest) -> UIViewController {
         return UIApplication.shared.keyWindow!.rootViewController!
     }
-    
+
     func handle(request: WLRRouteRequest, error: inout NSError?) -> Bool {
         let sourceViewController = sourceViewControllerForTransition(with: request)
         let targetViewController = self.targetViewController(with: request)
-        
+
         if !(sourceViewController.isKind(of: UIViewController.self)) || !(targetViewController.isKind(of: UIViewController.self)) {
             error = NSError.WLRTransitionError
             return false
         }
         targetViewController.wlr_request = request
-        
-        
+
         let isPreferModal = preferModalPresentation(with: request)
-        
+
         return transition(with: request, sourceViewController: sourceViewController, targetViewController: targetViewController, isPreferModal: isPreferModal, error: error)
     }
 

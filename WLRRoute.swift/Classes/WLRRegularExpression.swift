@@ -10,25 +10,24 @@ enum Expression: Error {
     case initError
 }
 
-
 class WLRRegularExpression: NSRegularExpression {
     static let WLRRouteParamPattern = ":[a-zA-Z0-9-_][^/]+"
     static let WLRRouteParamNamePattern = ":[a-zA-Z0-9-_]+"
     static let WLPRouteParamMatchPattern = "([^/]+)"
-    
+
     var routerParamNamesArr: [String] = []
-    
+
     static func expression(with pattern: String) -> WLRRegularExpression? {
         do {
             return try WLRRegularExpression(pattern: pattern, options: .caseInsensitive)
         } catch let error {
-            print(error)
+            print(error, #file, #function)
         }
         return nil
     }
-    
+
     override init(pattern: String, options: NSRegularExpression.Options = []) throws {
-        
+
         guard let transformedPattern = WLRRegularExpression.transfrom(from: pattern) else {
             throw Expression.initError
         }
@@ -39,21 +38,21 @@ class WLRRegularExpression: NSRegularExpression {
             print(error)
         }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func matchResult(for str: String) -> WLRMatchResult {
-        let array = matches(in: str, options: [], range: NSRange(location: 0, length: str.length))
+        let checkingResults = matches(in: str, options: [], range: NSRange(location: 0, length: str.length))
         let result = WLRMatchResult()
-        if array.isEmpty {
+        if checkingResults.isEmpty {
             return result
         }
         result.match = true
         var paramDict: [String: Any] = [:]
-        for paramResult in array {
-            for i in 1..<paramResult.numberOfRanges where i <= routerParamNamesArr.count {
+        for paramResult in checkingResults {
+            for i in 1 ..< paramResult.numberOfRanges where i <= routerParamNamesArr.count {
                 let paramName = routerParamNamesArr[i - 1]
                 let paramValue = str.substr(with: paramResult.rangeAt(i))
                 paramDict[paramName] = paramValue
@@ -62,13 +61,13 @@ class WLRRegularExpression: NSRegularExpression {
         result.paramProperties = paramDict
         return result
     }
-    
+
     static func transfrom(from pattern: String) -> String? {
         var transfromedPattern = pattern
         let paramPatternStrs = paramPatternStrings(from: pattern)
         do {
             let paramNamePatternEx = try NSRegularExpression(pattern: WLRRouteParamNamePattern, options: .caseInsensitive)
-            
+
             for paramPatternStr in paramPatternStrs! {
                 var replaceParamPatternStr = paramPatternStr
                 let foundParamNamePatternResult = paramNamePatternEx.matches(in: paramPatternStr, options: .reportProgress, range: NSRange(location: 0, length: paramPatternStr.length)).first
@@ -90,7 +89,7 @@ class WLRRegularExpression: NSRegularExpression {
         }
         return nil
     }
-    
+
     static func paramPatternStrings(from pattern: String) -> [String]? {
         do {
             let paramPatternEx = try NSRegularExpression(pattern: WLRRouteParamPattern, options: .caseInsensitive)

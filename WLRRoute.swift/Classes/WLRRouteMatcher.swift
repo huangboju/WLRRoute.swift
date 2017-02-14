@@ -9,14 +9,14 @@
 class WLRRouteMatcher {
     var routeExpressionPattern: String?
     var originalRouteExpression: String?
-    
+
     private var scheme = ""
     private var regexMatcher: WLRRegularExpression?
-    
+
     static func matcher(with routeExpression: String) -> WLRRouteMatcher {
         return WLRRouteMatcher(expression: routeExpression)
     }
-    
+
     init(expression: String) {
         if expression.isEmpty { return }
         let parts = expression.components(separatedBy: "://")
@@ -33,7 +33,7 @@ class WLRRouteMatcher {
         if scheme.isEmpty && scheme != url.scheme {
             return nil
         }
-        
+
         let result = regexMatcher?.matchResult(for: urlString)
         if !(result?.match)! {
             return nil
