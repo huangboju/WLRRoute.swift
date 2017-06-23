@@ -18,7 +18,10 @@ class WLRRouteMatcher {
     }
 
     init(expression: String) {
-        if expression.isEmpty { return }
+        if expression.isEmpty {
+            print("⚠️⚠️⚠️ 表达式为空")
+            return
+        }
         let parts = expression.components(separatedBy: "://")
         scheme = parts.first ?? ""
         routeExpressionPattern = parts.last

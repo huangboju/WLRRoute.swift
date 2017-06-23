@@ -6,8 +6,8 @@
 //  Copyright © 2017年 伯驹 黄. All rights reserved.
 //
 
-class WLRSignHandler: WLRRouteHandler {
-    override func targetViewController(with request: WLRRouteRequest) -> UIViewController {
+struct WLRSignHandler: WLRHandleable {
+    func targetViewController(with _: WLRRouteRequest) -> UIViewController {
         return SecondController()
     }
 }

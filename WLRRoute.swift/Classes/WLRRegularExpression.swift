@@ -39,7 +39,7 @@ class WLRRegularExpression: NSRegularExpression {
         }
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -112,11 +112,13 @@ class WLRRegularExpression: NSRegularExpression {
             let routeParamStrs = paramPatternStrings(from: pattern)
             var routeParamNames: [String] = []
             for routeParamStr in routeParamStrs! {
-                if let foundRouteParamNameResult = paramNameEx.matches(in: routeParamStr, options: .reportProgress, range: NSRange(location: 0, length: routeParamStr.length)).first {
-                    var routeParamNameStr = routeParamStr.substr(with: foundRouteParamNameResult.range)
-                    routeParamNameStr = routeParamNameStr.replacingOccurrences(of: ":", with: "")
-                    routeParamNames.append(routeParamNameStr)
+                let strRange = NSRange(location: 0, length: routeParamStr.length)
+                guard let foundRouteParamNameResult = paramNameEx.matches(in: routeParamStr, options: .reportProgress, range: strRange).first else {
+                    continue
                 }
+                var routeParamNameStr = routeParamStr.substr(with: foundRouteParamNameResult.range)
+                routeParamNameStr = routeParamNameStr.replacingOccurrences(of: ":", with: "")
+                routeParamNames.append(routeParamNameStr)
             }
             return routeParamNames
         } catch let error {

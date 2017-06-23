@@ -13,31 +13,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        WLRRouter.shared.register(handler: WLRSignHandler(), for: "/signin/:phone([0-9]+)")
+        WLRRouter.register(matchers: ["/signin/:phone([0-9]+)"])
+
+        TrieRouter.register("mgj://foo/bar") { _ in
+        }
+
+        TrieRouter.open("mgj://foo/bar")
+
+        DispatchQueue.global().async {
+            self.load()
+        }
+
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
+    func load() {
+        let detailViewController = MGJDetailController()
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
+        MGJViewController.register(with: "基本使用") { () -> UIViewController in
+            detailViewController.selectedSelector = #selector(MGJDetailController.demoBasicUsage)
+            return detailViewController
+        }
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
+        MGJViewController.register(with: "中文匹配") { () -> UIViewController in
+            detailViewController.selectedSelector = #selector(MGJDetailController.demoChineseCharacter)
+            return detailViewController
+        }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
+        MGJViewController.register(with: "自定义参数") { () -> UIViewController in
+            detailViewController.selectedSelector = #selector(MGJDetailController.demoParameters)
+            return detailViewController
+        }
 
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        MGJViewController.register(with: "传入字典信息") { () -> UIViewController in
+            detailViewController.selectedSelector = #selector(MGJDetailController.demoUserInfo)
+            return detailViewController
+        }
+
+        MGJViewController.register(with: "Fallback 到全局的 URL Pattern") { () -> UIViewController in
+            detailViewController.selectedSelector = #selector(MGJDetailController.demoFallback)
+            return detailViewController
+        }
+
+        MGJViewController.register(with: "Open 结束后执行 Completion Block") { () -> UIViewController in
+            detailViewController.selectedSelector = #selector(MGJDetailController.demoCompletion)
+            return detailViewController
+        }
+
+        MGJViewController.register(with: "基于 URL 模板生成 具体的 URL") { () -> UIViewController in
+            detailViewController.selectedSelector = #selector(MGJDetailController.demoGenerateURL)
+            return detailViewController
+        }
+
+        MGJViewController.register(with: "取消注册 URL Pattern") { () -> UIViewController in
+            detailViewController.selectedSelector = #selector(MGJDetailController.demoDeregisterURLPattern)
+            return detailViewController
+        }
+
+        MGJViewController.register(with: "同步获取 URL 对应的 Object") { () -> UIViewController in
+            detailViewController.selectedSelector = #selector(MGJDetailController.demoObjectForURL)
+            return detailViewController
+        }
     }
 }

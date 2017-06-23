@@ -26,10 +26,10 @@ struct WLRRouteRequest {
     init(url: URL) {
         self.url = url
         queryParameters = url.parameters
-        self.routeExpression = nil
-        self.routeParameters = nil
-        self.primitiveParams = nil
-        self.targetCallBack = nil
+        routeExpression = nil
+        routeParameters = nil
+        primitiveParams = nil
+        targetCallBack = nil
     }
 
     init(url: URL, routeExpression: String, routeParameters: [String: Any]?, primitiveParams: [String: Any]?, targetCallBack: ((_ error: NSError?, _ responseObject: Any) -> Void)?) {

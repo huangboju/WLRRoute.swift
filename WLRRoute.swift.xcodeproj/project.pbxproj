@@ -10,18 +10,28 @@
 		D811547E1E4AE9A300F5C22C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81154791E4AE9A300F5C22C /* Extensions.swift */; };
 		D811547F1E4AE9A300F5C22C /* WLRMatchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D811547A1E4AE9A300F5C22C /* WLRMatchResult.swift */; };
 		D81154801E4AE9A300F5C22C /* WLRRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = D811547B1E4AE9A300F5C22C /* WLRRegularExpression.swift */; };
-		D81154811E4AE9A300F5C22C /* WLRRouteMiddlewareProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D811547C1E4AE9A300F5C22C /* WLRRouteMiddlewareProtocol.swift */; };
 		D81154821E4AE9A300F5C22C /* WLRRouteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D811547D1E4AE9A300F5C22C /* WLRRouteRequest.swift */; };
 		D81154841E4AEB1800F5C22C /* WLRRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81154831E4AEB1800F5C22C /* WLRRouteHandler.swift */; };
 		D81154861E4AF39500F5C22C /* NSError+WLRError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81154851E4AF39500F5C22C /* NSError+WLRError.swift */; };
 		D81154881E4AF6E400F5C22C /* WLRRouteMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81154871E4AF6E400F5C22C /* WLRRouteMatcher.swift */; };
 		D811548A1E4AFC2100F5C22C /* WLRRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81154891E4AFC2100F5C22C /* WLRRouter.swift */; };
+		D812B7CE1E7644EA00E6299A /* TrieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812B7CD1E7644EA00E6299A /* TrieRouter.swift */; };
+		D812B7D01E76457100E6299A /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812B7CF1E76457100E6299A /* Trie.swift */; };
+		D81518B81E6A57E0000B430B /* MTRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81518B71E6A57E0000B430B /* MTRouter.swift */; };
+		D81518BA1E6A58FA000B430B /* MTMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81518B91E6A58FA000B430B /* MTMatcher.swift */; };
+		D81518BE1E6A5B84000B430B /* MTPageMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81518BD1E6A5B84000B430B /* MTPageMatcher.swift */; };
+		D81518C01E6A5DE3000B430B /* MTServecePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81518BF1E6A5DE3000B430B /* MTServecePresenter.swift */; };
+		D81E28C81E65249F006DD0C3 /* MGJRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81E28C71E65249F006DD0C3 /* MGJRouter.swift */; };
 		D86948811E49C617003F3EFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86948801E49C617003F3EFE /* AppDelegate.swift */; };
 		D86948831E49C617003F3EFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86948821E49C617003F3EFE /* ViewController.swift */; };
 		D86948861E49C617003F3EFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86948841E49C617003F3EFE /* Main.storyboard */; };
 		D86948881E49C617003F3EFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D86948871E49C617003F3EFE /* Assets.xcassets */; };
 		D869488B1E49C617003F3EFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86948891E49C617003F3EFE /* LaunchScreen.storyboard */; };
 		D86948961E49C618003F3EFE /* WLRRoute_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86948951E49C618003F3EFE /* WLRRoute_swiftUITests.swift */; };
+		D8A17DE81E67E3340045733D /* MainNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A17DE71E67E3340045733D /* MainNav.swift */; };
+		D8A17DEA1E67E7D10045733D /* MGJViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A17DE91E67E7D10045733D /* MGJViewController.swift */; };
+		D8A17DEC1E67E8140045733D /* MGJDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A17DEB1E67E8140045733D /* MGJDetailController.swift */; };
+		D8A17E1A1E69B5F10045733D /* MTMatchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A17E191E69B5F10045733D /* MTMatchFactory.swift */; };
 		D8E102F61E52CC9100B05708 /* SecondController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E102F51E52CC9100B05708 /* SecondController.swift */; };
 		D8E102F81E52CD0500B05708 /* WLRSignHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E102F71E52CD0500B05708 /* WLRSignHandler.swift */; };
 /* End PBXBuildFile section */
@@ -41,12 +51,18 @@
 		D81154791E4AE9A300F5C22C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D811547A1E4AE9A300F5C22C /* WLRMatchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLRMatchResult.swift; sourceTree = "<group>"; };
 		D811547B1E4AE9A300F5C22C /* WLRRegularExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLRRegularExpression.swift; sourceTree = "<group>"; };
-		D811547C1E4AE9A300F5C22C /* WLRRouteMiddlewareProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLRRouteMiddlewareProtocol.swift; sourceTree = "<group>"; };
 		D811547D1E4AE9A300F5C22C /* WLRRouteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLRRouteRequest.swift; sourceTree = "<group>"; };
 		D81154831E4AEB1800F5C22C /* WLRRouteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLRRouteHandler.swift; sourceTree = "<group>"; };
 		D81154851E4AF39500F5C22C /* NSError+WLRError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+WLRError.swift"; sourceTree = "<group>"; };
 		D81154871E4AF6E400F5C22C /* WLRRouteMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLRRouteMatcher.swift; sourceTree = "<group>"; };
 		D81154891E4AFC2100F5C22C /* WLRRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLRRouter.swift; sourceTree = "<group>"; };
+		D812B7CD1E7644EA00E6299A /* TrieRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieRouter.swift; sourceTree = "<group>"; };
+		D812B7CF1E76457100E6299A /* Trie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
+		D81518B71E6A57E0000B430B /* MTRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTRouter.swift; sourceTree = "<group>"; };
+		D81518B91E6A58FA000B430B /* MTMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTMatcher.swift; sourceTree = "<group>"; };
+		D81518BD1E6A5B84000B430B /* MTPageMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTPageMatcher.swift; sourceTree = "<group>"; };
+		D81518BF1E6A5DE3000B430B /* MTServecePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTServecePresenter.swift; sourceTree = "<group>"; };
+		D81E28C71E65249F006DD0C3 /* MGJRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGJRouter.swift; sourceTree = "<group>"; };
 		D869487D1E49C617003F3EFE /* WLRRoute.swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WLRRoute.swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86948801E49C617003F3EFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D86948821E49C617003F3EFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +73,10 @@
 		D86948911E49C618003F3EFE /* WLRRoute.swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WLRRoute.swiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86948951E49C618003F3EFE /* WLRRoute_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLRRoute_swiftUITests.swift; sourceTree = "<group>"; };
 		D86948971E49C618003F3EFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8A17DE71E67E3340045733D /* MainNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNav.swift; sourceTree = SOURCE_ROOT; };
+		D8A17DE91E67E7D10045733D /* MGJViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGJViewController.swift; sourceTree = "<group>"; };
+		D8A17DEB1E67E8140045733D /* MGJDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGJDetailController.swift; sourceTree = SOURCE_ROOT; };
+		D8A17E191E69B5F10045733D /* MTMatchFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTMatchFactory.swift; sourceTree = "<group>"; };
 		D8E102F51E52CC9100B05708 /* SecondController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondController.swift; sourceTree = "<group>"; };
 		D8E102F71E52CD0500B05708 /* WLRSignHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLRSignHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,14 +106,36 @@
 				D81154791E4AE9A300F5C22C /* Extensions.swift */,
 				D811547A1E4AE9A300F5C22C /* WLRMatchResult.swift */,
 				D811547B1E4AE9A300F5C22C /* WLRRegularExpression.swift */,
-				D811547C1E4AE9A300F5C22C /* WLRRouteMiddlewareProtocol.swift */,
 				D811547D1E4AE9A300F5C22C /* WLRRouteRequest.swift */,
 				D81154831E4AEB1800F5C22C /* WLRRouteHandler.swift */,
 				D81154851E4AF39500F5C22C /* NSError+WLRError.swift */,
 				D81154871E4AF6E400F5C22C /* WLRRouteMatcher.swift */,
 				D81154891E4AFC2100F5C22C /* WLRRouter.swift */,
+				D8A17E191E69B5F10045733D /* MTMatchFactory.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		D81518B61E6A57BD000B430B /* MTRouter */ = {
+			isa = PBXGroup;
+			children = (
+				D81518B71E6A57E0000B430B /* MTRouter.swift */,
+				D81518B91E6A58FA000B430B /* MTMatcher.swift */,
+				D81518BD1E6A5B84000B430B /* MTPageMatcher.swift */,
+				D81518BF1E6A5DE3000B430B /* MTServecePresenter.swift */,
+			);
+			name = MTRouter;
+			path = ../MTRouter;
+			sourceTree = "<group>";
+		};
+		D81E28C61E65247F006DD0C3 /* MGJ */ = {
+			isa = PBXGroup;
+			children = (
+				D81E28C71E65249F006DD0C3 /* MGJRouter.swift */,
+				D812B7CD1E7644EA00E6299A /* TrieRouter.swift */,
+				D812B7CF1E76457100E6299A /* Trie.swift */,
+			);
+			name = MGJ;
 			sourceTree = "<group>";
 		};
 		D86948741E49C617003F3EFE = {
@@ -117,6 +159,8 @@
 		D869487F1E49C617003F3EFE /* WLRRoute.swift */ = {
 			isa = PBXGroup;
 			children = (
+				D81518B61E6A57BD000B430B /* MTRouter */,
+				D81E28C61E65247F006DD0C3 /* MGJ */,
 				D81154771E4AE9A300F5C22C /* Classes */,
 				D86948801E49C617003F3EFE /* AppDelegate.swift */,
 				D86948821E49C617003F3EFE /* ViewController.swift */,
@@ -125,7 +169,10 @@
 				D86948871E49C617003F3EFE /* Assets.xcassets */,
 				D86948891E49C617003F3EFE /* LaunchScreen.storyboard */,
 				D869488C1E49C617003F3EFE /* Info.plist */,
+				D8A17DE91E67E7D10045733D /* MGJViewController.swift */,
 				D8E102F71E52CD0500B05708 /* WLRSignHandler.swift */,
+				D8A17DE71E67E3340045733D /* MainNav.swift */,
+				D8A17DEB1E67E8140045733D /* MGJDetailController.swift */,
 			);
 			path = WLRRoute.swift;
 			sourceTree = "<group>";
@@ -189,6 +236,7 @@
 				TargetAttributes = {
 					D869487C1E49C617003F3EFE = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 46A8679957;
 						ProvisioningStyle = Automatic;
 					};
 					D86948901E49C618003F3EFE = {
@@ -242,18 +290,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81518BE1E6A5B84000B430B /* MTPageMatcher.swift in Sources */,
+				D8A17E1A1E69B5F10045733D /* MTMatchFactory.swift in Sources */,
+				D8A17DE81E67E3340045733D /* MainNav.swift in Sources */,
+				D81E28C81E65249F006DD0C3 /* MGJRouter.swift in Sources */,
 				D811547F1E4AE9A300F5C22C /* WLRMatchResult.swift in Sources */,
 				D86948831E49C617003F3EFE /* ViewController.swift in Sources */,
 				D81154881E4AF6E400F5C22C /* WLRRouteMatcher.swift in Sources */,
 				D81154841E4AEB1800F5C22C /* WLRRouteHandler.swift in Sources */,
+				D81518B81E6A57E0000B430B /* MTRouter.swift in Sources */,
+				D812B7CE1E7644EA00E6299A /* TrieRouter.swift in Sources */,
 				D811548A1E4AFC2100F5C22C /* WLRRouter.swift in Sources */,
+				D812B7D01E76457100E6299A /* Trie.swift in Sources */,
 				D81154801E4AE9A300F5C22C /* WLRRegularExpression.swift in Sources */,
+				D81518C01E6A5DE3000B430B /* MTServecePresenter.swift in Sources */,
 				D811547E1E4AE9A300F5C22C /* Extensions.swift in Sources */,
 				D81154861E4AF39500F5C22C /* NSError+WLRError.swift in Sources */,
-				D81154811E4AE9A300F5C22C /* WLRRouteMiddlewareProtocol.swift in Sources */,
 				D8E102F61E52CC9100B05708 /* SecondController.swift in Sources */,
+				D8A17DEA1E67E7D10045733D /* MGJViewController.swift in Sources */,
 				D86948811E49C617003F3EFE /* AppDelegate.swift in Sources */,
+				D81518BA1E6A58FA000B430B /* MTMatcher.swift in Sources */,
 				D81154821E4AE9A300F5C22C /* WLRRouteRequest.swift in Sources */,
+				D8A17DEC1E67E8140045733D /* MGJDetailController.swift in Sources */,
 				D8E102F81E52CD0500B05708 /* WLRSignHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,7 +449,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 46A8679957;
 				INFOPLIST_FILE = WLRRoute.swift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.huangboju.WLRRoute-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -404,7 +464,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 46A8679957;
 				INFOPLIST_FILE = WLRRoute.swift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.huangboju.WLRRoute-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
